@@ -23,4 +23,16 @@ export const mockData = [
     description: 'Bu dördüncü notun açıklaması',
     date: '12.25 PM',
   },
+  {
+    id: 5,
+    title: 'Designer',
+    description: 'Bu dördüncü notun açıklaması',
+    date: '12.25 PM',
+  },
+  {
+    id: 6,
+    title: 'Client',
+    description: 'Bu dördüncü notun açıklaması',
+    date: '12.25 PM',
+  },
 ];

@@ -1,32 +1,35 @@
-import { StyleSheet, TouchableOpacity } from 'react-native'
-import React from 'react'
-import { screenHeight, screenWidth } from '../utils/constants'
-import { Add } from 'iconsax-react-native'
-import { AppColors } from '../theme/colors'
-import App from '../../App'
+import {Alert, StyleSheet, TouchableOpacity} from 'react-native';
+import React from 'react';
 
-const FloatActionButton = () => {
-    
+import {Add} from 'iconsax-react-native';
+import {AppColors} from '../theme/colors';
+
+
+
+const FloatActionButton = ({onPress}) => {
+
+
+
+
   return (
-    <TouchableOpacity style={styles.container}>
-      <Add size="50" color={AppColors.WHITE}/>
+    <TouchableOpacity style={styles.container} onPress={onPress} >
+      <Add size="50" color={AppColors.WHITE} />
     </TouchableOpacity>
-  )
-}
+  );
+};
 
-export default FloatActionButton
+export default FloatActionButton;
 
 const styles = StyleSheet.create({
-    container:{
-        justifyContent:'center',
-        alignItems:'center',
-        backgroundColor:AppColors.BLUE,
-        borderRadius:1000,
-        position:'absolute',
-        bottom:20,
-        right:20,
-        width:70,
-        height:70
-        
-    }
-})
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: AppColors.BLUE,
+    borderRadius: 1000,
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+    width: 70,
+    height: 70,
+  },
+});
