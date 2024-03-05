@@ -1,6 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { screenWidth } from '../utils/constants'
 import { AppColors } from '../theme/colors'
 
 const Button = (props) => {
