@@ -66,7 +66,7 @@ const EditButtons = () => {
   return (
     <View style={styles.editButtonsWrapper}>
       {Buttons.map(item => (
-        <TouchableOpacity>{item.icon}</TouchableOpacity>
+        <TouchableOpacity key={item.id}>{item.icon}</TouchableOpacity>
       ))}
     </View>
   );
