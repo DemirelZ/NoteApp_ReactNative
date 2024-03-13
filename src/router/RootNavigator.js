@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator();
 
 const RootNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName={STATEEXAMPLE}>
+    <Stack.Navigator initialRouteName={MYNOTES}>
       <Stack.Screen
         name={MYNOTES}
         component={MyNotes}

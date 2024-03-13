@@ -1,13 +1,19 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {screenHeight, screenWidth} from '../utils/constants';
-import {Trash, Component} from 'iconsax-react-native';
+import {Trash, Component, Edit} from 'iconsax-react-native';
 import {AppColors} from '../theme/colors';
 import NoteCardStyles from '../styles/NoteCardStyles';
+import {ADDNOTE, NOTEDETAIL} from '../utils/routes';
+import {useNavigation} from '@react-navigation/native';
 
-const NoteCard = ({item}) => {
+const NoteCard = ({item, deleteNote, updateNote}) => {
+  const navigation = useNavigation();
+
   return (
-    <View style={NoteCardStyles.container}>
+    <TouchableOpacity
+      style={NoteCardStyles.container}
+      onPress={() => navigation.navigate(NOTEDETAIL, {note:{item}})}>
       <TouchableOpacity style={NoteCardStyles.done}>
         <Component size="18" color={AppColors.BLACK} variant="Bulk" />
       </TouchableOpacity>
@@ -16,10 +22,17 @@ const NoteCard = ({item}) => {
         <Text>{item.description}</Text>
         <Text>{item.date}</Text>
       </View>
-      <TouchableOpacity style={NoteCardStyles.trash}>
+      <TouchableOpacity
+        style={NoteCardStyles.trash}
+        onPress={() => deleteNote(item.id)}>
         <Trash size="26" color={AppColors.BLACK} variant="Bulk" />
       </TouchableOpacity>
-    </View>
+      <TouchableOpacity
+        style={NoteCardStyles.trash}
+        onPress={() => navigation.navigate(ADDNOTE, {note:item, type:'update'})}>
+        <Edit size="26" color={AppColors.BLACK} variant="Bulk" />
+      </TouchableOpacity>
+    </TouchableOpacity>
   );
 };
 
