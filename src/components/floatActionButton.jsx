@@ -4,15 +4,9 @@ import React from 'react';
 import {Add} from 'iconsax-react-native';
 import {AppColors} from '../theme/colors';
 
-
-
 const FloatActionButton = ({onPress}) => {
-
-
-
-
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress} >
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <Add size="50" color={AppColors.WHITE} />
     </TouchableOpacity>
   );

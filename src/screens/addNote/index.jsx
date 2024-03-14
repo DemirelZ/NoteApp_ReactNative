@@ -1,12 +1,17 @@
 import {StyleSheet, View, SafeAreaView, TextInput, Text} from 'react-native';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import Button from '../../components/Button';
 import {Alert} from 'react-native';
 import EditButtons from '../../components/EditButtons';
 import {AppColors} from '../../theme/colors';
+import MyContext from '../../context';
+import {MYNOTES} from '../../utils/routes';
+import {useNavigation} from '@react-navigation/native'
 
 const AddNote = ({route}) => {
+  const {addNote, updateNote} = useContext(MyContext);
   const {note, type} = route?.params;
+  const navigation=useNavigation()
 
   const [title, setTitle] = useState(note?.title);
   const [description, setDescription] = useState(note?.description);
@@ -25,11 +30,26 @@ const AddNote = ({route}) => {
       id: new Date().getTime(),
       title: title,
       description: description,
-      date: new Date().toLocaleDateString(),
+      date: new Date().toLocaleString(),
+      isRead:false
+    };
+    addNote(newNote);
+    
+    navigation.goBack()
+    Alert.alert('Notunuz başarıyla kaydedildi')
+  };
+
+  const handleUpdate = () => {
+    const form = {
+      id: note?.id,
+      title: title,
+      description: description,
+      date: new Date().toLocaleString(),
     };
 
-    setTitle('');
-    setDescription('');
+    updateNote(note.id, form);
+    navigation.goBack()
+    Alert.alert('Notunuz başarıyla güncellendi')
   };
 
   return (
@@ -56,7 +76,7 @@ const AddNote = ({route}) => {
       </View>
       <Button
         title={type === 'update' ? 'Update' : 'Save'}
-        onPress={saveNote}
+        onPress={type === 'update' ? handleUpdate : saveNote}
       />
     </SafeAreaView>
   );

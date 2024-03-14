@@ -1,10 +1,13 @@
 import {View, Text, StyleSheet} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import EditButtons from '../../components/EditButtons';
+import MyContext from '../../context';
 
 const NoteDetail = ({route}) => {
   const {note} = route?.params;
   const [changedStyle, setChangedStyle] = useState(styles.normal);
+
+  const {updateNote} = useContext(MyContext);
 
   const onChangeStyle = value => {
     switch (value) {
@@ -35,6 +38,10 @@ const NoteDetail = ({route}) => {
     }
   };
 
+  useEffect(() => {
+    updateNote(note.item.id, note.item);
+  }, []);
+
   return (
     <View>
       <EditButtons onChangeStyle={onChangeStyle} />
@@ -42,7 +49,9 @@ const NoteDetail = ({route}) => {
         <Text style={{fontSize: 30, fontWeight: 'bold'}}>Başlık</Text>
         <Text style={{fontSize: 20}}>{note.item.title}</Text>
         <Text style={{fontSize: 26, fontWeight: 'bold'}}>Açıklama</Text>
-        <Text style={[{fontSize:20},changedStyle]}>{note.item.description}</Text>
+        <Text style={[{fontSize: 20}, changedStyle]}>
+          {note.item.description}
+        </Text>
       </View>
     </View>
   );

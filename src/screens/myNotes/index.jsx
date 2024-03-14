@@ -10,29 +10,9 @@ import {ADDNOTE, NOTEDETAIL} from '../../utils/routes';
 import MyContext from '../../context';
 
 const MyNotes = ({navigation}) => {
-  const {notes, setNotes} = useContext(MyContext);
+  const {notes} = useContext(MyContext);
 
-  const addNote = () => {
-    const note = {
-      id: 8,
-      title: 'oldu mu',
-      description: 'fgdfgdfgdfgdfg',
-      date: '25.89.65',
-    };
-    setNotes([...notes, note]);
-  };
 
-  const deleteNote = id => {
-    const filteredNote = notes.filter(item => item.id !== id);
-    setNotes(filteredNote);
-  };
-
-  const updateNote = id => {
-    const updatedNotes = notes.map(item =>
-      item.id === id ? {...item, title: 'degisti'} : item,
-    );
-    setNotes(updatedNotes);
-  };
 
   return (
     <SafeAreaView style={screenStyles.container}>
@@ -43,8 +23,8 @@ const MyNotes = ({navigation}) => {
           renderItem={({item}) => (
             <NoteCard
               item={item}
-              deleteNote={deleteNote}
-              updateNote={updateNote}
+              
+             
             />
           )}
           keyExtractor={item => item.id}
