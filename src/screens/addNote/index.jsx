@@ -107,8 +107,9 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   input: {
-    flex: 1,
+   height:40,
     fontSize: 20,
     letterSpacing: 2,
+    
   },
 });

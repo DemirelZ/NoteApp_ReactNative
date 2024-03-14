@@ -22,6 +22,7 @@ const Provider = ({children}) => {
   const deleteNote = id => {
     const filteredNote = notes.filter(item => item.id !== id);
     setNotes(filteredNote);
+    Alert.alert('Bilgi','Silme işlemi başarılı bir şekilde gerçekleşti')
   };
 
   const updateNote = (id, item) => {

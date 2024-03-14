@@ -2,6 +2,7 @@
 
 This project is a note-taking application developed using React Native. The application has basic functionalities such as adding, updating, deleting notes and viewing details of notes.
 <br/>
+ContextAPI used as global state management.
 
 ## Features:
 - Adding Notes: Users can add new notes with title and description.
